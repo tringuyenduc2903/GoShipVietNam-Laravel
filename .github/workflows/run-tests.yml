@@ -23,7 +23,7 @@ jobs:
         os: [ ubuntu-latest, windows-latest ]
         php: [ 8.4, 8.3 ]
         laravel: [ 12.*, 11.*, 10.* ]
-        stability: [ prefer-lowest, prefer-stable ]
+        stability: [ prefer-stable ]
         include:
           - laravel: 12.*
             testbench: 10.*
@@ -61,3 +61,6 @@ jobs:
 
       - name: Execute tests
         run: vendor/bin/pest --ci
+        env:
+          GOSHIP_API_URL: ${{secrets.GOSHIP_API_URL}}
+          GOSHIP_JWT: ${{secrets.GOSHIP_JWT}}
