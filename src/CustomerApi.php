@@ -24,4 +24,18 @@ trait CustomerApi
 
         return $this->getRequest()->post('api/v2/customers', $data)->json();
     }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function updateCustomer(string $customerId, array $data): array
+    {
+        Validator::validate($data, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'max:255', 'email:rfc,dns'],
+            'phone' => ['required', 'string', 'max:255'],
+        ]);
+
+        return $this->getRequest()->post("api/v2/customers/$customerId", $data)->json();
+    }
 }
