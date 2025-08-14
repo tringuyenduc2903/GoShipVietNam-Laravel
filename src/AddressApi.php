@@ -42,6 +42,9 @@ trait AddressApi
         return $this->getRequest()->get('api/v2/districts', $query)->json();
     }
 
+    /**
+     * @throws ConnectionException
+     */
     public function getWardsByDistrictId(int $districtId): array
     {
         return $this->getRequest()->get("api/v2/districts/$districtId/wards")->json();
