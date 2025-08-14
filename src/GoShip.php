@@ -2,19 +2,12 @@
 
 namespace BeetechAsia\GoShip;
 
-use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 class GoShip
 {
-    /**
-     * @throws ConnectionException
-     */
-    public function getProvinces(): array
-    {
-        return $this->getRequest()->get('api/v2/cities')->json();
-    }
+    use AddressApi;
 
     public function getRequest(): PendingRequest
     {
