@@ -11,7 +11,7 @@ it(
     function () {
         $customer = GoShip::createCustomer([
             'name' => fake()->name(),
-            'email' => fake()->email(),
+            'email' => fake()->freeEmail(),
             'phone' => fake()->phoneNumber(),
             'address' => [
                 'street' => fake()->streetAddress(),
@@ -32,9 +32,21 @@ it(
     function () {
         $customer = GoShip::updateCustomer('3lm5kg26', [
             'name' => fake()->name(),
-            'email' => fake()->email(),
+            'email' => fake()->freeEmail(),
             'phone' => fake()->phoneNumber(),
         ]);
+
+        expect($customer)->toBeArray();
+    }
+);
+
+it(
+    'deleteCustomer must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $customer = GoShip::deleteCustomer('3lm5kg26');
 
         expect($customer)->toBeArray();
     }

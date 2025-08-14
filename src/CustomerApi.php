@@ -38,4 +38,12 @@ trait CustomerApi
 
         return $this->getRequest()->post("api/v2/customers/$customerId", $data)->json();
     }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function deleteCustomer(string $customerId): array
+    {
+        return $this->getRequest()->delete("api/v2/customers/$customerId")->json();
+    }
 }
