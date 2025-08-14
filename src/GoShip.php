@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 class GoShip
 {
     use AddressApi;
+    use CustomerApi;
 
     public function getRequest(): PendingRequest
     {
