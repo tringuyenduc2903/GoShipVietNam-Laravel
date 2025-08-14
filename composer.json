@@ -1,17 +1,17 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "tringuyenduc2903/goshipvietnam-laravel",
+    "description": "GoShip SDK for Laravel framework (Only Vietnam Support)",
     "keywords": [
-        ":vendor_name",
+        "Beetech Asia",
         "laravel",
-        ":package_slug"
+        "goshipvietnam-laravel"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/tringuyenduc2903/goshipvietnam-laravel",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Tri Nguyen Duc (Bee Tech - PHP)",
+            "email": "tri.nguyen.duc@beetechjsc.com",
             "role": "Developer"
         }
     ],
@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
+            "BeetechAsia\\GoShip\\": "src/",
+            "BeetechAsia\\GoShip\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "BeetechAsia\\GoShip\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -63,10 +63,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "BeetechAsia\\GoShip\\GoShipServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "GoShip": "BeetechAsia\\GoShip\\Facades\\GoShip"
             }
         }
     },
