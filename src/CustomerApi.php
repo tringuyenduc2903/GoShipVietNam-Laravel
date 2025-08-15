@@ -10,6 +10,16 @@ trait CustomerApi
     /**
      * @throws ConnectionException
      */
+    public function getCustomers(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
+
+        return $this->getRequest()->get('api/v2/customers', $query)->json();
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function createCustomer(array $data): array
     {
         Validator::validate($data, [

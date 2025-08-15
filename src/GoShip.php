@@ -24,4 +24,19 @@ class GoShip
     {
         return config('goshipvietnam.jwt');
     }
+
+    protected function getPaginateQuery(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        if ($perPage) {
+            $query['size'] = $perPage;
+        }
+
+        if (is_null($page)) {
+            $page = request($pageName, 1);
+        }
+
+        $query['page'] = $page;
+
+        return $query;
+    }
 }

@@ -27,17 +27,7 @@ trait AddressApi
      */
     public function getDistricts(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
     {
-        $query = [];
-
-        if ($perPage) {
-            $query['size'] = $perPage;
-        }
-
-        if (is_null($page)) {
-            $page = request($pageName, 1);
-        }
-
-        $query['page'] = $page;
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
 
         return $this->getRequest()->get('api/v2/districts', $query)->json();
     }

@@ -4,6 +4,18 @@ use BeetechAsia\GoShip\Facades\GoShip;
 use Illuminate\Http\Client\ConnectionException;
 
 it(
+    'getCustomers must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $customers = GoShip::getCustomers();
+
+        expect($customers)->toBeArray();
+    }
+);
+
+it(
     'createCustomer must be array',
     /**
      * @throws ConnectionException
