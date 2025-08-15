@@ -32,7 +32,7 @@ trait CustomerApi
     {
         Validator::validate($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255', 'email:rfc,dns'],
+            'email' => ['nullable', 'string', 'max:255', 'email:rfc,dns'],
             'phone' => ['required', 'string', 'max:255'],
             'address' => ['required'],
             'address.street' => ['required', 'string', 'max:255'],
@@ -50,7 +50,7 @@ trait CustomerApi
     {
         Validator::validate($data, [
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255', 'email:rfc,dns'],
+            'email' => ['nullable', 'string', 'max:255', 'email:rfc,dns'],
             'phone' => ['required', 'string', 'max:255'],
         ]);
 
@@ -60,8 +60,10 @@ trait CustomerApi
     /**
      * @throws ConnectionException
      */
-    public function deleteCustomer(string $customerId): string
+    public function deleteCustomer(string $customerId): bool
     {
-        return $this->getRequest()->delete("api/v2/customers/$customerId")->json('message');
+        $status = $this->getRequest()->delete("api/v2/customers/$customerId")->json('status');
+
+        return $status === 'success';
     }
 }

@@ -45,7 +45,7 @@ it(
     function () {
         $customer = GoShip::createCustomer([
             'name' => fake()->name(),
-            'email' => fake()->freeEmail(),
+            'email' => fake()->boolean() ? fake()->freeEmail() : null,
             'phone' => fake()->phoneNumber(),
             'address' => [
                 'street' => fake()->streetAddress(),
@@ -66,9 +66,9 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $customer = GoShip::updateCustomer('z82pdr26', [
+        $customer = GoShip::updateCustomer('elpomgr8', [
             'name' => fake()->name(),
-            'email' => fake()->freeEmail(),
+            'email' => fake()->boolean() ? fake()->freeEmail() : null,
             'phone' => fake()->phoneNumber(),
         ]);
 
@@ -79,15 +79,15 @@ it(
 );
 
 it(
-    'deleteCustomer must be array',
+    'deleteCustomer must be bool',
     /**
      * @throws ConnectionException
      */
     function () {
-        $customer = GoShip::deleteCustomer('z82pdr26');
+        $customer = GoShip::deleteCustomer('elpomgr8');
 
         expect($customer)
             ->dump()
-            ->toBeString();
+            ->toBeBool();
     }
 );
