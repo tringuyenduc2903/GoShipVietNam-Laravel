@@ -51,7 +51,7 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $wards = GoShip::getWardsByDistrictId(100300);
+        $wards = GoShip::getWardsByDistrictId(100100);
 
         expect($wards)
             ->dump()
