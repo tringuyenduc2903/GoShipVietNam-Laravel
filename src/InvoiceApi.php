@@ -35,4 +35,14 @@ trait InvoiceApi
 
         return $this->getRequest()->get('api/v2/invoices', $query)->json('data');
     }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getShipmentByInvoiceId(string $invoiceId, ?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
+
+        return $this->getRequest()->get("api/v2/invoices/$invoiceId/shipments", $query)->json('data');
+    }
 }

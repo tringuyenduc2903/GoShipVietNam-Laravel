@@ -35,3 +35,17 @@ it(
             ->toBeArray();
     }
 );
+
+it(
+    'getShipmentByInvoiceId must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipments = GoShip::getShipmentByInvoiceId('FA13HEUD');
+
+        expect($shipments)
+            ->dump()
+            ->toBeArray();
+    }
+);
