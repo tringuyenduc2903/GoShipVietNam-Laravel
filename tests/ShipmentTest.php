@@ -25,14 +25,14 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $shipment = fake()->boolean()
+        $shipments = fake()->boolean()
             ? GoShip::searchShipment(fake()->randomElement(['GS8KOV152L', '96f794ff-261d-4ee3-98e0-c04cf1063549']))
             : GoShip::searchShipment(
                 start_date: now()->subDays(7)->format('Y-m-d'),
                 end_date: now()->format('Y-m-d')
             );
 
-        expect($shipment)
+        expect($shipments)
             ->dump()
             ->toBeArray();
     }
