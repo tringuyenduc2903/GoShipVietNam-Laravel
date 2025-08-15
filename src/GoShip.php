@@ -9,6 +9,7 @@ class GoShip
 {
     use AddressApi;
     use CustomerApi;
+    use RateApi;
 
     public function getRequest(): PendingRequest
     {
