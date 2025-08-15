@@ -2,6 +2,7 @@
 
 use BeetechAsia\GoShip\Facades\GoShip;
 use Illuminate\Http\Client\ConnectionException;
+use Random\RandomException;
 
 it(
     'getCustomers must be array',
@@ -10,6 +11,23 @@ it(
      */
     function () {
         $customers = GoShip::getCustomers();
+
+        expect($customers)->toBeArray();
+    }
+);
+
+it(
+    'searchCustomer must be array',
+    /**
+     * @throws ConnectionException
+     * @throws RandomException
+     */
+    function () {
+        $customers = GoShip::searchCustomer(match (random_int(0, 2)) {
+            0 => fake()->name(),
+            1 => fake()->freeEmail(),
+            2 => fake()->phoneNumber(),
+        });
 
         expect($customers)->toBeArray();
     }

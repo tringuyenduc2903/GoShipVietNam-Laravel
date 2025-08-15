@@ -20,6 +20,14 @@ trait CustomerApi
     /**
      * @throws ConnectionException
      */
+    public function searchCustomer(string $q): array
+    {
+        return $this->getRequest()->get('api/v2/customers/search', compact('q'))->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function createCustomer(array $data): array
     {
         Validator::validate($data, [
