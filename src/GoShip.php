@@ -9,6 +9,7 @@ class GoShip
 {
     use AddressApi;
     use CustomerApi;
+    use InvoiceApi;
     use RateApi;
     use ShipmentApi;
 
