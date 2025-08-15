@@ -50,3 +50,17 @@ it(
             ->toBeBool();
     }
 );
+
+it(
+    'deleteShipment must be bool',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipment = GoShip::deleteShipment('GS6AYEDVZ6');
+
+        expect($shipment)
+            ->dump()
+            ->toBeBool();
+    }
+);

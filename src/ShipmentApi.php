@@ -46,4 +46,14 @@ trait ShipmentApi
 
         return $status === 'success';
     }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function deleteShipment(string $shipmentId): bool
+    {
+        $status = $this->getRequest()->delete("api/v2/shipments/$shipmentId")->json('status');
+
+        return $status === 'success';
+    }
 }
