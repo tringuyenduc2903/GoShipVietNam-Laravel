@@ -14,7 +14,7 @@ trait CustomerApi
     {
         $query = $this->getPaginateQuery($perPage, $pageName, $page);
 
-        return $this->getRequest()->get('api/v2/customers', $query)->json();
+        return $this->getRequest()->get('api/v2/customers', $query)->json('data');
     }
 
     /**
@@ -40,7 +40,7 @@ trait CustomerApi
             'address.city' => ['required', 'integer'],
         ]);
 
-        return $this->getRequest()->post('api/v2/customers', $data)->json();
+        return $this->getRequest()->post('api/v2/customers', $data)->json('data');
     }
 
     /**
@@ -54,14 +54,14 @@ trait CustomerApi
             'phone' => ['required', 'string', 'max:255'],
         ]);
 
-        return $this->getRequest()->post("api/v2/customers/$customerId", $data)->json();
+        return $this->getRequest()->post("api/v2/customers/$customerId", $data)->json('data');
     }
 
     /**
      * @throws ConnectionException
      */
-    public function deleteCustomer(string $customerId): array
+    public function deleteCustomer(string $customerId): string
     {
-        return $this->getRequest()->delete("api/v2/customers/$customerId")->json();
+        return $this->getRequest()->delete("api/v2/customers/$customerId")->json('message');
     }
 }

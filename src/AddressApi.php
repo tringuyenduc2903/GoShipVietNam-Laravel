@@ -11,15 +11,7 @@ trait AddressApi
      */
     public function getProvinces(): array
     {
-        return $this->getRequest()->get('api/v2/cities')->json();
-    }
-
-    /**
-     * @throws ConnectionException
-     */
-    public function getDistrictsByProvinceId(int $provinceId): array
-    {
-        return $this->getRequest()->get("api/v2/cities/$provinceId/districts")->json();
+        return $this->getRequest()->get('api/v2/cities')->json('data');
     }
 
     /**
@@ -29,7 +21,15 @@ trait AddressApi
     {
         $query = $this->getPaginateQuery($perPage, $pageName, $page);
 
-        return $this->getRequest()->get('api/v2/districts', $query)->json();
+        return $this->getRequest()->get('api/v2/districts', $query)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getDistrictsByProvinceId(int $provinceId): array
+    {
+        return $this->getRequest()->get("api/v2/cities/$provinceId/districts")->json('data');
     }
 
     /**
@@ -37,6 +37,6 @@ trait AddressApi
      */
     public function getWardsByDistrictId(int $districtId): array
     {
-        return $this->getRequest()->get("api/v2/districts/$districtId/wards")->json();
+        return $this->getRequest()->get("api/v2/districts/$districtId/wards")->json('data');
     }
 }

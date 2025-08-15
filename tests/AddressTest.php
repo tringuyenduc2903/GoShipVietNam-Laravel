@@ -11,19 +11,9 @@ it(
     function () {
         $provinces = GoShip::getProvinces();
 
-        expect($provinces)->toBeArray();
-    }
-);
-
-it(
-    'getDistrictsByProvinceId must be array',
-    /**
-     * @throws ConnectionException
-     */
-    function () {
-        $districts = GoShip::getDistrictsByProvinceId(100000);
-
-        expect($districts)->toBeArray();
+        expect($provinces)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -35,7 +25,23 @@ it(
     function () {
         $districts = GoShip::getDistricts();
 
-        expect($districts)->toBeArray();
+        expect($districts)
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
+    'getDistrictsByProvinceId must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $districts = GoShip::getDistrictsByProvinceId(100000);
+
+        expect($districts)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -47,6 +53,8 @@ it(
     function () {
         $wards = GoShip::getWardsByDistrictId(100300);
 
-        expect($wards)->toBeArray();
+        expect($wards)
+            ->dump()
+            ->toBeArray();
     }
 );

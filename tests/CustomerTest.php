@@ -12,7 +12,9 @@ it(
     function () {
         $customers = GoShip::getCustomers();
 
-        expect($customers)->toBeArray();
+        expect($customers)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -29,7 +31,9 @@ it(
             2 => fake()->phoneNumber(),
         });
 
-        expect($customers)->toBeArray();
+        expect($customers)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -50,7 +54,9 @@ it(
             ],
         ]);
 
-        expect($customer)->toBeArray();
+        expect($customer)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -60,13 +66,15 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $customer = GoShip::updateCustomer('3lm5kg26', [
+        $customer = GoShip::updateCustomer('z82pdr26', [
             'name' => fake()->name(),
             'email' => fake()->freeEmail(),
             'phone' => fake()->phoneNumber(),
         ]);
 
-        expect($customer)->toBeArray();
+        expect($customer)
+            ->dump()
+            ->toBeArray();
     }
 );
 
@@ -76,8 +84,10 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $customer = GoShip::deleteCustomer('3lm5kg26');
+        $customer = GoShip::deleteCustomer('z82pdr26');
 
-        expect($customer)->toBeArray();
+        expect($customer)
+            ->dump()
+            ->toBeString();
     }
 );
