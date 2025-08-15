@@ -18,12 +18,12 @@ it(
 );
 
 it(
-    'getDistricts must be array',
+    'getDistrictsByProvinceId must be array',
     /**
      * @throws ConnectionException
      */
     function () {
-        $districts = GoShip::getDistricts();
+        $districts = GoShip::getDistrictsByProvinceId(100000);
 
         expect($districts)
             ->dump()
@@ -32,12 +32,12 @@ it(
 );
 
 it(
-    'getDistrictsByProvinceId must be array',
+    'getDistricts must be array',
     /**
      * @throws ConnectionException
      */
     function () {
-        $districts = GoShip::getDistrictsByProvinceId(100000);
+        $districts = GoShip::getDistricts();
 
         expect($districts)
             ->dump()

@@ -24,7 +24,7 @@ it(
      */
     function () {
         $transactions = fake()->boolean()
-            ? GoShip::searchTransaction(fake()->randomElement(['GS8KOV152L', '96f794ff-261d-4ee3-98e0-c04cf1063549']))
+            ? GoShip::searchTransaction('GSox6or6q5')
             : GoShip::searchTransaction(
                 from: now()->subDays(7)->format('Y-m-d'),
                 to: now()->format('Y-m-d')

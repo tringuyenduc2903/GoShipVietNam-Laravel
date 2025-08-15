@@ -3,7 +3,7 @@
 // config for BeetechAsia/GoShip
 return [
     // @phpstan-ignore-next-line
-    'url' => env('GOSHIP_API_URL', 'https://sandbox.goship.io'),
+    'url' => env('GOSHIP_API_URL', 'https://api.goship.io/api/v2'),
     // @phpstan-ignore-next-line
     'jwt' => env('GOSHIP_JWT', ''),
     // @phpstan-ignore-next-line

@@ -24,7 +24,7 @@ it(
      */
     function () {
         $invoices = fake()->boolean()
-            ? GoShip::searchInvoice('FA13HEUD')
+            ? GoShip::searchInvoice('HDF9D9SS')
             : GoShip::searchInvoice(
                 from: now()->subDays(7)->format('Y-m-d'),
                 to: now()->format('Y-m-d')
@@ -42,7 +42,7 @@ it(
      * @throws ConnectionException
      */
     function () {
-        $shipments = GoShip::getShipmentByInvoiceId('FA13HEUD');
+        $shipments = GoShip::getShipmentByInvoiceId('HDF9D9SS');
 
         expect($shipments)
             ->dump()

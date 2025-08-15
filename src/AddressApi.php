@@ -17,19 +17,19 @@ trait AddressApi
     /**
      * @throws ConnectionException
      */
-    public function getDistricts(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    public function getDistrictsByProvinceId(int $provinceId): array
     {
-        $query = $this->getPaginateQuery($perPage, $pageName, $page);
-
-        return $this->getRequest()->get('api/v2/districts', $query)->json('data');
+        return $this->getRequest()->get("api/v2/cities/$provinceId/districts")->json('data');
     }
 
     /**
      * @throws ConnectionException
      */
-    public function getDistrictsByProvinceId(int $provinceId): array
+    public function getDistricts(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
     {
-        return $this->getRequest()->get("api/v2/cities/$provinceId/districts")->json('data');
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
+
+        return $this->getRequest()->get('api/v2/districts', $query)->json('data');
     }
 
     /**
