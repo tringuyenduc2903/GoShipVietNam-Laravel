@@ -64,4 +64,7 @@ jobs:
         env:
           GOSHIP_API_URL: ${{secrets.GOSHIP_API_URL}}
           GOSHIP_JWT: ${{secrets.GOSHIP_JWT}}
+          GOSHIP_USERNAME: ${{secrets.GOSHIP_USERNAME}}
+          GOSHIP_PASSWORD: ${{secrets.GOSHIP_PASSWORD}}
+          GOSHIP_CLIENT_ID: ${{secrets.GOSHIP_CLIENT_ID}}
           GOSHIP_CLIENT_SECRET: ${{secrets.GOSHIP_CLIENT_SECRET}}

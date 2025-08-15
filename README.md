@@ -25,6 +25,9 @@ This is the contents of the published config file:
 return [
     'url' => env('GOSHIP_API_URL', 'https://api.goship.io/api/v2'),
     'jwt' => env('GOSHIP_JWT', ''),
+    'username' => env('GOSHIP_USERNAME', ''),
+    'password' => env('GOSHIP_PASSWORD', ''),
+    'client_id' => env('GOSHIP_CLIENT_ID', ''),
     'client_secret' => env('GOSHIP_CLIENT_SECRET', ''),
 ];
 ```
@@ -50,7 +53,7 @@ GoShip::getProvinces();
 
 ### 2. [Lấy danh sách quận/huyện theo mã tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n-theo-m%C3%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
 
-###                                           
+###                                               
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -300,6 +303,20 @@ Giới thiệu: Hàm trả về giá trị boolean (true/false)
 use BeetechAsia\GoShip\Facades\GoShip;
 
 GoShip::verifyWebhook();
+```
+
+### 21. [Đăng nhập](https://doc.goship.io/getting-started/authentication#login)
+
+```php
+use BeetechAsia\GoShip\Facades\GoShip;
+
+$data = [
+    'username' => config('goshipvietnam.username'),
+    'password' => config('goshipvietnam.password'),
+    'client_id' => config('goshipvietnam.client_id'),
+    'client_secret' => config('goshipvietnam.client_secret'),
+];
+GoShip::login($data);
 ```
 
 ## Testing

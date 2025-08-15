@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Http;
 class GoShip
 {
     use AddressApi;
+    use AuthenticationApi;
     use CustomerApi;
     use InvoiceApi;
     use RateApi;

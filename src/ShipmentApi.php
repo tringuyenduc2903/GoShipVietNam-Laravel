@@ -45,9 +45,9 @@ trait ShipmentApi
     {
         Validator::validate($data, [
             'shipment' => ['required'],
-            'shipment.rate' => ['required', 'string'],
+            'shipment.rate' => ['required', 'string', 'max:255'],
             'shipment.payer' => ['required', 'integer', Rule::in(Payer::getValues())],
-            'shipment.order_id' => ['required', 'string'],
+            'shipment.order_id' => ['required', 'string', 'max:255'],
             'shipment.address_from' => ['required'],
             'shipment.address_from.name' => ['required', 'string', 'max:255'],
             'shipment.address_from.phone' => ['required', 'string', 'max:255'],

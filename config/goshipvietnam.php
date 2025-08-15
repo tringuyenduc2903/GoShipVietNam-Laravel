@@ -7,5 +7,11 @@ return [
     // @phpstan-ignore-next-line
     'jwt' => env('GOSHIP_JWT', ''),
     // @phpstan-ignore-next-line
+    'username' => env('GOSHIP_USERNAME', ''),
+    // @phpstan-ignore-next-line
+    'password' => env('GOSHIP_PASSWORD', ''),
+    // @phpstan-ignore-next-line
+    'client_id' => env('GOSHIP_CLIENT_ID', ''),
+    // @phpstan-ignore-next-line
     'client_secret' => env('GOSHIP_CLIENT_SECRET', ''),
 ];
