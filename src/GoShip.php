@@ -12,6 +12,7 @@ class GoShip
     use InvoiceApi;
     use RateApi;
     use ShipmentApi;
+    use TransactionApi;
 
     public function getRequest(): PendingRequest
     {
