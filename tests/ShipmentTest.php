@@ -6,6 +6,20 @@ use Illuminate\Http\Client\ConnectionException;
 use Random\RandomException;
 
 it(
+    'getShipments must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipments = GoShip::getShipments();
+
+        expect($shipments)
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
     'createShipment must be bool',
     /**
      * @throws ConnectionException

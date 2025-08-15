@@ -12,6 +12,16 @@ trait ShipmentApi
     /**
      * @throws ConnectionException
      */
+    public function getShipments(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
+
+        return $this->getRequest()->get('api/v2/shipments', $query)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function createShipment(array $data): bool
     {
         Validator::validate($data, [
