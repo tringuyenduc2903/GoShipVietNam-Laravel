@@ -39,14 +39,12 @@
     },
     "autoload": {
         "psr-4": {
-            "BeetechAsia\\GoShip\\": "src/",
-            "BeetechAsia\\GoShip\\Database\\Factories\\": "database/factories/"
+            "BeetechAsia\\GoShip\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "BeetechAsia\\GoShip\\Tests\\": "tests/",
-            "Workbench\\App\\": "workbench/app/"
+            "BeetechAsia\\GoShip\\Tests\\": "tests/"
         }
     },
     "scripts": {

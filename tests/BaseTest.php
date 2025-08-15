@@ -1,5 +1,8 @@
 <?php
 
+use BeetechAsia\GoShip\Enums\Carrier;
+use BeetechAsia\GoShip\Enums\Payer;
+use BeetechAsia\GoShip\Enums\Shipment;
 use BeetechAsia\GoShip\Facades\GoShip;
 
 it(
@@ -35,5 +38,41 @@ it(
         expect($result)
             ->dump()
             ->toBeBool();
+    }
+);
+
+it(
+    'NormalShipment must be array',
+    function () {
+        $shipment = Shipment::getRandomValue();
+        $label = Shipment::getDescription($shipment);
+
+        expect([$shipment => $label])
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
+    'NormalCarrier must be array',
+    function () {
+        $keys = Carrier::getKeys();
+        $values = Carrier::getValues();
+
+        expect(array_combine($keys, $values))
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
+    'Payer must be array',
+    function () {
+        $keys = Payer::getKeys();
+        $values = Payer::getValues();
+
+        expect(array_combine($keys, $values))
+            ->dump()
+            ->toBeArray();
     }
 );

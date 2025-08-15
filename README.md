@@ -53,7 +53,7 @@ GoShip::getProvinces();
 
 ### 2. [Lấy danh sách quận/huyện theo mã tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n-theo-m%C3%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
 
-###                                               
+###                                                
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;

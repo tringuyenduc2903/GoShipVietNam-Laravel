@@ -12,7 +12,7 @@ use BenSampo\Enum\Enum;
  */
 final class Payer extends Enum
 {
-    const CUSTOMER = 0;
+    const int CUSTOMER = 0;
 
-    const SHOP = 1;
+    const int SHOP = 1;
 }
