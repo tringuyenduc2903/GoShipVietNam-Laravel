@@ -47,6 +47,8 @@ trait Rate
             'paths.*.parcel' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'array'],
             'paths.*.parcel.name' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'string', 'max:255'],
             'paths.*.parcel.quantity' => ['nullable', 'integer'],
+            'paths.*.parcel.cod_amount' => ['nullable', 'integer'],
+            'paths.*.parcel.amount' => ['nullable', 'integer'],
             'paths.*.parcel.width' => ['nullable', 'integer'],
             'paths.*.parcel.height' => ['nullable', 'integer'],
             'paths.*.parcel.length' => ['nullable', 'integer'],

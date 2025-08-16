@@ -49,15 +49,17 @@ it(
         $rates = GoShip::getOnDemandRates([
             'paths' => [
                 [
-                    'lat' => 20.9842552,
-                    'lng' => 105.8609381,
+                    'lat' => fake()->latitude(),
+                    'lng' => fake()->longitude(),
                     'kind' => Kind::PICKUP,
                 ],
                 [
-                    'lat' => 20.9895958,
-                    'lng' => 105.8445432,
+                    'lat' => fake()->latitude(),
+                    'lng' => fake()->longitude(),
                     'kind' => Kind::DELIVERY,
                     'parcel' => [
+                        'cod_amount' => fake()->boolean() ? random_int(100_000, 200_000) : null,
+                        'amount' => fake()->boolean() ? random_int(100_000, 200_000) : null,
                         'name' => fake()->name(),
                         'quantity' => random_int(10, 100),
                         'width' => random_int(10, 100),
