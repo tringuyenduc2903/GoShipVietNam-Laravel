@@ -219,12 +219,13 @@ GoShip::searchShipment(start_date: $start_date, end_date: $end_date);
 ### 13. [Tạo mới Vận đơn](https://doc.goship.io/api/shipment/shipment#t%E1%BA%A1o-m%E1%BB%9Bi-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
+use BeetechAsia\GoShip\Enums\Payer;
 use BeetechAsia\GoShip\Facades\GoShip;
 
 $data = [
     'shipment' => [
         'rate' => 'MTRfMTFfMTAwMg==',
-        'payer' => 1,
+        'payer' => Payer::CUSTOMER,
         'order_id' => '02846e55e191c5706a5021191563c2a6',
         'address_from' => [
             'name' => 'Nguyễn Văn A',
