@@ -119,6 +119,44 @@ trait Shipment
     /**
      * @throws ConnectionException
      */
+    public function updateOnDemandShipment(string $shipmentId, array $data): ?array
+    {
+        Validator::validate($data, [
+            'order_id' => ['required', 'string'],
+            'paths' => ['required', 'array', 'size:2'],
+            'paths.*.address' => ['required', 'string'],
+            'paths.*.name' => ['required', 'string'],
+            'paths.*.phone' => ['required', 'string'],
+            'paths.*.lat' => ['required', 'numeric', 'min:-90', 'max:90'],
+            'paths.*.lng' => ['required', 'numeric', 'min:-180', 'max:180'],
+            'paths.*.kind' => ['required', 'integer', Rule::in(Kind::getValues())],
+            'paths.*.parcel' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'array'],
+            'paths.*.parcel.name' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'string'],
+            'paths.*.parcel.quantity' => ['nullable', 'integer'],
+            'paths.*.parcel.cod_amount' => ['nullable', 'integer'],
+            'paths.*.parcel.amount' => ['nullable', 'integer'],
+            'paths.*.parcel.width' => ['nullable', 'integer'],
+            'paths.*.parcel.height' => ['nullable', 'integer'],
+            'paths.*.parcel.length' => ['nullable', 'integer'],
+            'paths.*.parcel.weight' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'integer'],
+            'carrier' => ['required', 'integer', Rule::in(OnDemandCarrier::getValues())],
+            'vehicle' => ['required', 'string', Rule::in('BIKE')],
+            'service' => ['required', 'string'],
+            'note' => ['required', 'string'],
+            'meta_data' => ['nullable', 'array'],
+            'meta_data.*' => ['required', 'string'],
+            'requests' => ['nullable', 'array'],
+            'requests.*._id' => ['required', 'string'],
+            'requests.*.num' => ['nullable', 'integer'],
+            'requests.*.tier_code' => ['required', 'string'],
+        ]);
+
+        return $this->getRequest()->put("api/v2/ondemand-shipments/$shipmentId", $data)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function deleteShipment(string $shipmentId): bool
     {
         $status = $this->getRequest()->delete("api/v2/shipments/$shipmentId")->json('status');

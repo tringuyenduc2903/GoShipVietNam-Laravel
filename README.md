@@ -436,6 +436,64 @@ $data = [
 GoShip::createOnDemandShipment($data);
 ```
 
+### 24. [Sửa thông tin Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#s%E1%BB%ADa-th%C3%B4ng-tin-v%E1%BA%ADn-%C4%91%C6%A1n)
+
+```php
+use BeetechAsia\GoShip\Enums\Kind;
+use BeetechAsia\GoShip\Enums\OnDemandCarrier;
+use BeetechAsia\GoShip\Enums\Tier;
+use BeetechAsia\GoShip\Facades\GoShip;
+
+$shipmentId = '56GDG8F';
+$data = [
+    'order_id' => '02846e55e191c5706a5021191563c2a6',
+    'paths' => [
+        [
+            'address' => 'Ngõ 371 Phố Vũ Tông Phan, Phường Khương Đình, Quận Thanh Xuân, Hà Nội, Việt Nam',
+            'name' => 'Nguyễn Văn A',
+            'phone' => '0913131313',
+            'lat' => 20.9842552,
+            'lng' => 105.8609381,
+            'kind' => Kind::PICKUP,
+        ],
+        [
+            'address' => '300 Đ. Giải Phóng, Phương Liệt, Hai Bà Trưng, Hà Nội, Việt Nam',
+            'name' => 'Trần Văn B',
+            'phone' => '0912121212',
+            'lat' => 20.9895958,
+            'lng' => 105.8445432,
+            'kind' => Kind::DELIVERY,
+            'parcel' => [
+                'name' => 'Tủ gỗ',
+                'quantity' => 1,
+                'quantity' => 20,
+                'width' => 20,
+                'weight' => 200,
+            ],
+        ],
+    ],
+    'carrier' => OnDemandCarrier::AHAMOVE,
+    'vehicle' => 'BIKE',
+    'service' => 'HAN-BIKE', // Ahamove: HAN-BIKE, Grab: GrabExpress
+    'note' => 'Để vào tủ đồ ở sảnh chung cư (Đến nơi liên hệ KH để lấy mã)' // Nếu không có ghi chú, đặt giá trị là chuỗi rỗng (empty string)
+    'metadata' => ['Hàng dễ vỡ, vui lòng nhẹ tay.'], // Không bắt buộc
+    /*
+     * Áp dụng cho Ahamove
+     * HAN-BIKE-ROUND-TRIP: Tài xế sẽ quay lại điểm lấy hàng với số phí bằng 80% phí khoảng cách. Lưu ý: Phí khoảng cách là số phí dựa theo số km vận chuyển, ko bao gồm phí điểm dừng và các loại phí khác.
+     * HAN-BIKE-BULKY: Giao hàng cồng kềnh
+     *             | Kích thước    | Cân nặng    | Mức phí
+     *      TIER_2:| 60x50x60 (cm) | 40kg        | 10.000 VND
+     *      TIER_3:| 70x60x70 (cm) | 60kg        | 20.000 VND
+     *      TIER_4:| 90x70x90 (cm) | 80kg        | 40.000 VND
+     */
+    'requests' => [[
+        '_id' => 'HAN-BIKE-BULKY',
+        'tier_code' => Tier::TIER_2,
+    ]],
+];
+GoShip::updateOnDemandShipment($shipmentId, $data);
+```
+
 ## Testing
 
 ```bash

@@ -141,6 +141,59 @@ it(
 );
 
 it(
+    'updateOnDemandShipment must be array',
+    /**
+     * @throws ConnectionException
+     * @throws RandomException
+     */
+    function () {
+        $carrier = OnDemandCarrier::getRandomValue();
+
+        $shipment = GoShip::updateOnDemandShipment('GSNX8EXZLM', [
+            'order_id' => Str::uuid()->toString(),
+            'paths' => [
+                [
+                    'address' => fake()->address(),
+                    'name' => fake()->name(),
+                    'phone' => fake()->phoneNumber(),
+                    'lat' => fake()->latitude(),
+                    'lng' => fake()->longitude(),
+                    'kind' => Kind::PICKUP,
+                ],
+                [
+                    'address' => fake()->address(),
+                    'name' => fake()->name(),
+                    'phone' => fake()->phoneNumber(),
+                    'lat' => fake()->latitude(),
+                    'lng' => fake()->longitude(),
+                    'kind' => Kind::DELIVERY,
+                    'parcel' => [
+                        'name' => fake()->name(),
+                        'quantity' => random_int(10, 100),
+                        'width' => random_int(10, 100),
+                        'weight' => random_int(10, 100),
+                        'height' => random_int(10, 100),
+                    ],
+                ],
+            ],
+            'carrier' => $carrier,
+            'vehicle' => 'BIKE',
+            'service' => $carrier === OnDemandCarrier::AHAMOVE ? 'HAN-BIKE' : 'GrabExpress',
+            'note' => fake()->sentence(),
+            'metadata' => fake()->boolean() ? ['Hàng dễ vỡ, vui lòng nhẹ tay.'] : null,
+            'requests' => [[
+                '_id' => fake()->randomElement(['HAN-BIKE-ROUND-TRIP', 'HAN-BIKE-BULKY']),
+                'tier_code' => Tier::getRandomValue(),
+            ]],
+        ]);
+
+        expect(is_array($shipment))
+            ->dump()
+            ->toBeBool();
+    }
+);
+
+it(
     'deleteShipment must be bool',
     /**
      * @throws ConnectionException
