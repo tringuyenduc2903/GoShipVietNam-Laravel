@@ -13,14 +13,14 @@ trait RateApi
     public function getRates(array $data): array
     {
         Validator::validate($data, [
-            'shipment' => ['required'],
-            'shipment.address_from' => ['required'],
+            'shipment' => ['required', 'array'],
+            'shipment.address_from' => ['required', 'array'],
             'shipment.address_from.district' => ['required', 'integer'],
             'shipment.address_from.city' => ['required', 'integer'],
-            'shipment.address_to' => ['required'],
+            'shipment.address_to' => ['required', 'array'],
             'shipment.address_to.district' => ['required', 'integer'],
             'shipment.address_to.city' => ['required', 'integer'],
-            'shipment.parcel' => ['required'],
+            'shipment.parcel' => ['required', 'array'],
             'shipment.parcel.cod' => ['nullable', 'integer'],
             'shipment.parcel.amount' => ['nullable', 'integer'],
             'shipment.parcel.width' => ['required', 'integer'],

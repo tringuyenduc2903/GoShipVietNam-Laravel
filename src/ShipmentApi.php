@@ -44,18 +44,18 @@ trait ShipmentApi
     public function createShipment(array $data): bool
     {
         Validator::validate($data, [
-            'shipment' => ['required'],
+            'shipment' => ['required', 'array'],
             'shipment.rate' => ['required', 'string', 'max:255'],
             'shipment.payer' => ['required', 'integer', Rule::in(Payer::getValues())],
             'shipment.order_id' => ['required', 'string', 'max:255'],
-            'shipment.address_from' => ['required'],
+            'shipment.address_from' => ['required', 'array'],
             'shipment.address_from.name' => ['required', 'string', 'max:255'],
             'shipment.address_from.phone' => ['required', 'string', 'max:255'],
             'shipment.address_from.street' => ['required', 'string', 'max:255'],
             'shipment.address_from.ward' => ['required', 'integer'],
             'shipment.address_from.district' => ['required', 'integer'],
             'shipment.address_from.city' => ['required', 'integer'],
-            'shipment.address_to' => ['required'],
+            'shipment.address_to' => ['required', 'array'],
             'shipment.address_to.name' => ['required', 'string', 'max:255'],
             'shipment.address_to.phone' => ['required', 'string', 'max:255'],
             'shipment.address_to.street' => ['required', 'string', 'max:255'],

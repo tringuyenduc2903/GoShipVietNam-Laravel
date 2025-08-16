@@ -34,7 +34,7 @@ trait CustomerApi
             'name' => ['required', 'string', 'max:255'],
             'email' => ['nullable', 'string', 'max:255', 'email:rfc,dns'],
             'phone' => ['required', 'string', 'max:255'],
-            'address' => ['required'],
+            'address' => ['required', 'array'],
             'address.street' => ['required', 'string', 'max:255'],
             'address.district' => ['required', 'integer'],
             'address.city' => ['required', 'integer'],
