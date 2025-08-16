@@ -55,7 +55,7 @@ trait Rate
             'paths.*.parcel.weight' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'integer'],
             'paths.*.services' => ['nullable', 'array'],
             'paths.*.services.*._id' => ['required', 'string'],
-            'paths.*.services.*.num' => ['required', 'integer'],
+            'paths.*.services.*.num' => ['nullable', 'integer'],
             'paths.*.services.*.tier_code' => ['required', 'string'],
         ]);
 
