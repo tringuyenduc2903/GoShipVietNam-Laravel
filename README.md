@@ -16,7 +16,7 @@ composer require tringuyenduc2903/goshipvietnam-laravel
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="goshipvietnam-laravel-config"
+php artisan vendor:publish --tag="goshipvietnam-config"
 ```
 
 This is the contents of the published config file:
