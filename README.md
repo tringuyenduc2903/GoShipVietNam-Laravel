@@ -32,14 +32,45 @@ return [
 ];
 ```
 
-Giải thích
+#### Giải thích
 
-**url**: Môi trường phát triển tích hợp (**Sandbox**: https://sandbox.goship.io/api/v2,
-**Production**: https://api.goship.io/api/v2)
+- **url**: Môi trường phát triển tích hợp (**Sandbox**: https://sandbox.goship.io/api/v2,
+  **Production**: https://api.goship.io/api/v2)
+- **jwt**: Access Token (Sử dụng cho Phương thức
+  _[Lấy Access Token trực tiếp](https://doc.goship.io/getting-started/installation#_1-l%E1%BA%A5y-access-token-tr%E1%BB%B1c-ti%E1%BA%BFp)_)
+- **username**: Email (Sử dụng cho Phương thức
+  _[Sử dụng tài khoản developer](https://doc.goship.io/getting-started/installation#_2-s%E1%BB%AD-d%E1%BB%A5ng-t%C3%A0i-kho%E1%BA%A3n-developer)_)
+- **password**: Mật khẩu (Sử dụng cho Phương thức
+  _[Sử dụng tài khoản developer](https://doc.goship.io/getting-started/installation#_2-s%E1%BB%AD-d%E1%BB%A5ng-t%C3%A0i-kho%E1%BA%A3n-developer)_)
+- **client_id**: Client ID (Sử dụng cho Phương thức
+  _[Sử dụng tài khoản developer](https://doc.goship.io/getting-started/installation#_2-s%E1%BB%AD-d%E1%BB%A5ng-t%C3%A0i-kho%E1%BA%A3n-developer)_)
+- **client_secret**: Client secret (Sử dụng cho
+  _[Xác thực webhook](https://doc.goship.io/api/shipment/webhooks#x%C3%A1c-th%E1%BB%B1c-webhook)_ và Phương thức
+  _[Sử dụng tài khoản developer](https://doc.goship.io/getting-started/installation#_2-s%E1%BB%AD-d%E1%BB%A5ng-t%C3%A0i-kho%E1%BA%A3n-developer)_)
 
-**jwt**: Access Token
+#### File .env:
 
-**client_secret**: Client secret
+- Đối
+  với
+  _[Lấy Access Token trực tiếp](https://doc.goship.io/getting-started/installation#_1-l%E1%BA%A5y-access-token-tr%E1%BB%B1c-ti%E1%BA%BFp)_:
+
+```dotenv
+GOSHIP_API_URL=https://api.goship.io/api/v2
+GOSHIP_JWT=
+GOSHIP_CLIENT_SECRET=
+```
+
+- Đối
+  với
+  _[Sử dụng tài khoản developer](https://doc.goship.io/getting-started/installation#_2-s%E1%BB%AD-d%E1%BB%A5ng-t%C3%A0i-kho%E1%BA%A3n-developer)_:
+
+```dotenv
+GOSHIP_API_URL=https://api.goship.io/api/v2
+GOSHIP_USERNAME=
+GOSHIP_PASSWORD=
+GOSHIP_CLIENT_ID=
+GOSHIP_CLIENT_SECRET=
+```
 
 ## Usage
 
@@ -52,8 +83,6 @@ GoShip::getProvinces();
 ```
 
 ### 2. [Lấy danh sách quận/huyện theo mã tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n-theo-m%C3%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
-
-###                                                
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;

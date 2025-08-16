@@ -1,5 +1,6 @@
 <?php
 
+use BeetechAsia\GoShip\Enums\OnDemandShipment;
 use BeetechAsia\GoShip\Enums\Shipment;
 
 return [
@@ -26,6 +27,22 @@ return [
         Shipment::IN_STORAGE => 'Đang lưu kho (Hàng đang được lưu kho tại HVC)',
         Shipment::IN_TRANSIT => 'Đang vận chuyển (Hàng đang được vận chuyển đến kho trung chuyển)',
         Shipment::ERROR => 'Đơn lỗi',
+    ],
+
+    OnDemandShipment::class => [
+        OnDemandShipment::NEW => 'Đơn mới (Đơn đã lưu chưa được gửi sang HVC)',
+        OnDemandShipment::SENT => 'Đã gửi đơn (Đơn đã được gửi sang HVC)',
+        OnDemandShipment::WAITING_FOR_PICKUP => 'Chờ lấy hàng (Chờ HVC điều phối đơn cho bưu tá)',
+        OnDemandShipment::PICKING_UP => 'Đang lấy hàng (Bưu tá đang trên đường tới lấy hàng)',
+        OnDemandShipment::PICKED_UP => 'Đã lấy hàng (Bưu tá đã nhận hàng từ shop)',
+        OnDemandShipment::DELIVERING => 'Giao hàng (Hàng đang được đi giao cho khách)',
+        OnDemandShipment::DELIVERED_SUCCESS => 'Giao thành công (Đã giao hàng cho khách thành công)',
+        OnDemandShipment::DELIVERED_FAILED => 'Đơn hàng bị huỷ (Bưu tá không giao được hàng hoặc huỷ đơn, giao thất bại)',
+        OnDemandShipment::RETURNING => 'Đang chuyển hoàn (Hàng giao thất bại đang được chuyển ngược trở lại trả shop)',
+        OnDemandShipment::RETURNED => 'Đã hoàn hàng (Hàng giao thất bại đã gửi trả shop)',
+        OnDemandShipment::COMPLETED => 'Hoàn thành (Đơn hàng Hoàn thành - Kết thúc quá trình chuyển phát)',
+        OnDemandShipment::CANCELED => 'Đơn hủy (Đơn hàng đã bị hủy - Khách hủy hoặc shop hủy)',
+        OnDemandShipment::ERROR => 'Đơn lỗi (Lỗi khi gửi đơn sang hãng vận chuyển)',
     ],
 
 ];
