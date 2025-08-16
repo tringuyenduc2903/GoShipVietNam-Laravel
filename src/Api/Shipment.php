@@ -24,6 +24,16 @@ trait Shipment
     /**
      * @throws ConnectionException
      */
+    public function getOnDemandShipments(?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        $query = $this->getPaginateQuery($perPage, $pageName, $page);
+
+        return $this->getRequest()->get('api/v2/ondemand-shipments', $query)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function searchShipment(?string $q = null, ?string $start_date = null, ?string $end_date = null, ?int $perPage = null, string $pageName = 'page', ?int $page = null): array
     {
         $search = Validator::validate(compact('q', 'start_date', 'end_date'), [

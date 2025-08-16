@@ -504,6 +504,14 @@ $shipmentId = '56GDG8F';
 GoShip::deleteOnDemandShipment($shipmentId);
 ```
 
+### 26. [Danh sách Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n)
+
+```php
+use BeetechAsia\GoShip\Facades\GoShip;
+
+GoShip::getOnDemandShipments();
+```
+
 ## Testing
 
 ```bash

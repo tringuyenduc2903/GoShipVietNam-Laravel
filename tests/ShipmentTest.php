@@ -23,6 +23,20 @@ it(
 );
 
 it(
+    'getOnDemandShipments must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipments = GoShip::getOnDemandShipments();
+
+        expect($shipments)
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
     'searchShipment must be array',
     /**
      * @throws ConnectionException
