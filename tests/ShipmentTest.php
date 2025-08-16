@@ -206,3 +206,17 @@ it(
             ->toBeBool();
     }
 );
+
+it(
+    'deleteOnDemandShipment must be bool',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipment = GoShip::deleteOnDemandShipment('GSNX8EXZLM');
+
+        expect($shipment)
+            ->dump()
+            ->toBeBool();
+    }
+);

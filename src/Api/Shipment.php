@@ -163,4 +163,14 @@ trait Shipment
 
         return $status === 'success';
     }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function deleteOnDemandShipment(string $shipmentId): bool
+    {
+        $status = $this->getRequest()->delete("api/v2/ondemand-shipments/$shipmentId")->json('status');
+
+        return $status === 'success';
+    }
 }
