@@ -348,6 +348,34 @@ $data = [
 GoShip::login($data);
 ```
 
+### 22. [Lấy biểu phí vận chuyển Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/rate)
+
+```php
+use BeetechAsia\GoShip\Enums\Kind;use BeetechAsia\GoShip\Facades\GoShip;
+
+$data = [
+    'paths' => [
+        [
+            'lat' => 20.9842552,
+            'lng' => 105.8609381,
+            'kind' => Kind::PICKUP,
+        ],
+        [
+            'lat' => 20.9895958,
+            'lng' => 105.8445432,
+            'kind' => Kind::DELIVERY,
+            'parcel' => [
+                'name' => 'Tủ gỗ',
+                'quantity' => 20,
+                'width' => 20,
+                'weight' => 200,
+            ],
+        ],
+    ],
+];
+GoShip::getOnDemandRates($data);
+```
+
 ## Testing
 
 ```bash

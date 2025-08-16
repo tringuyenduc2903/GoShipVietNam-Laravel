@@ -2,8 +2,10 @@
 
 namespace BeetechAsia\GoShip;
 
+use BeetechAsia\GoShip\Enums\Kind;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 trait RateApi
 {
@@ -30,5 +32,31 @@ trait RateApi
         ]);
 
         return $this->getRequest()->post('api/v2/rates', $data)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
+    public function getOnDemandRates(array $data): array
+    {
+        Validator::validate($data, [
+            'paths' => ['required', 'array', 'size:2'],
+            'paths.*.lat' => ['required', 'numeric', 'min:-90', 'max:90'],
+            'paths.*.lng' => ['required', 'numeric', 'min:-180', 'max:189'],
+            'paths.*.kind' => ['required', 'integer', Rule::in(Kind::getValues())],
+            'paths.*.parcel' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'array'],
+            'paths.*.parcel.name' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'string', 'max:255'],
+            'paths.*.parcel.quantity' => ['nullable', 'integer'],
+            'paths.*.parcel.width' => ['nullable', 'integer'],
+            'paths.*.parcel.height' => ['nullable', 'integer'],
+            'paths.*.parcel.length' => ['nullable', 'integer'],
+            'paths.*.parcel.weight' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'integer'],
+            'paths.*.services' => ['nullable', 'array'],
+            'paths.*.services.*._id' => ['required', 'string'],
+            'paths.*.services.*.num' => ['required', 'integer'],
+            'paths.*.services.*.tier_code' => ['required', 'string'],
+        ]);
+
+        return $this->getRequest()->post('api/v2/ondemand-shipments/rates', $data)->json('data');
     }
 }
