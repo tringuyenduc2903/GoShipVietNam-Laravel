@@ -2,6 +2,10 @@
 
 All notable changes to `GoShipVietNam-Laravel` will be documented in this file.
 
+## Release v1.0.1 - GoShip SDK for Laravel - 2025-08-16
+
+This release introduces minor updates and bug fixes to the GoShip SDK for Laravel, enhancing stability and usability for Vietnam-specific shipping integrations. Key improvements include refined API request handling, updated documentation for clarity, and minor performance optimizations. This version ensures better compatibility with the GoShip API and improves developer experience for managing shipments, customers, and on-demand services within Laravel applications.
+
 ## Initial Release of GoShipVietNam-Laravel SDK - 2025-08-16
 
 We are excited to announce the first official release of the **GoShipVietNam-Laravel SDK (v1.0.0)**, designed to integrate seamlessly with the Laravel framework for interacting with the GoShip API, tailored specifically for Vietnam-based logistics and shipping services. This release provides a robust set of tools to manage customers, shipments, rates, invoices, transactions, and on-demand delivery services, streamlining e-commerce and logistics workflows.
