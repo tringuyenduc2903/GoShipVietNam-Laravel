@@ -14,10 +14,10 @@ trait Authentication
     public function login(array $data): array
     {
         Validator::validate($data, [
-            'username' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string'],
+            'password' => ['required', 'string'],
             'client_id' => ['required', 'integer'],
-            'client_secret' => ['required', 'string', 'max:255'],
+            'client_secret' => ['required', 'string'],
         ]);
 
         $result = $this->getRequest()->post('api/v2/login', $data)->json();
@@ -32,10 +32,10 @@ trait Authentication
     {
         Validator::validate($data, [
             'refresh_token' => ['required', 'string'],
-            'username' => ['required', 'string', 'max:255'],
-            'password' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string'],
+            'password' => ['required', 'string'],
             'client_id' => ['required', 'integer'],
-            'client_secret' => ['required', 'string', 'max:255'],
+            'client_secret' => ['required', 'string'],
         ]);
 
         return $this->getRequest()->post('api/v2/refresh_token', $data)->json();

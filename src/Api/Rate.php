@@ -45,7 +45,7 @@ trait Rate
             'paths.*.lng' => ['required', 'numeric', 'min:-180', 'max:189'],
             'paths.*.kind' => ['required', 'integer', Rule::in(Kind::getValues())],
             'paths.*.parcel' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'array'],
-            'paths.*.parcel.name' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'string', 'max:255'],
+            'paths.*.parcel.name' => ['nullable', 'required_if:paths.*.kind,'.Kind::DELIVERY, 'string'],
             'paths.*.parcel.quantity' => ['nullable', 'integer'],
             'paths.*.parcel.cod_amount' => ['nullable', 'integer'],
             'paths.*.parcel.amount' => ['nullable', 'integer'],

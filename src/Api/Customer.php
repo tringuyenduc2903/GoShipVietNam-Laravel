@@ -31,11 +31,11 @@ trait Customer
     public function createCustomer(array $data): array
     {
         Validator::validate($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['nullable', 'string', 'max:255', 'email:rfc,dns'],
-            'phone' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
+            'email' => ['nullable', 'string', 'email:rfc,dns'],
+            'phone' => ['required', 'string'],
             'address' => ['required', 'array'],
-            'address.street' => ['required', 'string', 'max:255'],
+            'address.street' => ['required', 'string'],
             'address.district' => ['required', 'integer'],
             'address.city' => ['required', 'integer'],
         ]);
@@ -49,9 +49,9 @@ trait Customer
     public function updateCustomer(string $customerId, array $data): array
     {
         Validator::validate($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['nullable', 'string', 'max:255', 'email:rfc,dns'],
-            'phone' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string'],
+            'email' => ['nullable', 'string', 'email:rfc,dns'],
+            'phone' => ['required', 'string'],
         ]);
 
         return $this->getRequest()->post("api/v2/customers/$customerId", $data)->json('data');
