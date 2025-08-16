@@ -2,18 +2,27 @@
 
 namespace BeetechAsia\GoShip;
 
+use BeetechAsia\GoShip\Api\Authentication;
+use BeetechAsia\GoShip\Api\City;
+use BeetechAsia\GoShip\Api\Customer;
+use BeetechAsia\GoShip\Api\District;
+use BeetechAsia\GoShip\Api\Invoice;
+use BeetechAsia\GoShip\Api\Rate;
+use BeetechAsia\GoShip\Api\Shipment;
+use BeetechAsia\GoShip\Api\Transaction;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
 class GoShip
 {
-    use AddressApi;
-    use AuthenticationApi;
-    use CustomerApi;
-    use InvoiceApi;
-    use RateApi;
-    use ShipmentApi;
-    use TransactionApi;
+    use Authentication;
+    use City;
+    use Customer;
+    use District;
+    use Invoice;
+    use Rate;
+    use Shipment;
+    use Transaction;
 
     public function getRequest(): PendingRequest
     {

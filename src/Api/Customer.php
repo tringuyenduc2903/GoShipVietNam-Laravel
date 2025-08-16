@@ -1,11 +1,11 @@
 <?php
 
-namespace BeetechAsia\GoShip;
+namespace BeetechAsia\GoShip\Api;
 
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Validator;
 
-trait CustomerApi
+trait Customer
 {
     /**
      * @throws ConnectionException

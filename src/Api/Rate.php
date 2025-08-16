@@ -1,13 +1,13 @@
 <?php
 
-namespace BeetechAsia\GoShip;
+namespace BeetechAsia\GoShip\Api;
 
 use BeetechAsia\GoShip\Enums\Kind;
 use Illuminate\Http\Client\ConnectionException;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-trait RateApi
+trait Rate
 {
     /**
      * @throws ConnectionException

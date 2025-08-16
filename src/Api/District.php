@@ -1,27 +1,11 @@
 <?php
 
-namespace BeetechAsia\GoShip;
+namespace BeetechAsia\GoShip\Api;
 
 use Illuminate\Http\Client\ConnectionException;
 
-trait AddressApi
+trait District
 {
-    /**
-     * @throws ConnectionException
-     */
-    public function getProvinces(): array
-    {
-        return $this->getRequest()->get('api/v2/cities')->json('data');
-    }
-
-    /**
-     * @throws ConnectionException
-     */
-    public function getDistrictsByProvinceId(int $provinceId): array
-    {
-        return $this->getRequest()->get("api/v2/cities/$provinceId/districts")->json('data');
-    }
-
     /**
      * @throws ConnectionException
      */
