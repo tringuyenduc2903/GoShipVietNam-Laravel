@@ -53,6 +53,25 @@ trait Shipment
     /**
      * @throws ConnectionException
      */
+    public function searchOnDemandShipment(?string $q = null, ?string $start_date = null, ?string $end_date = null, ?int $perPage = null, string $pageName = 'page', ?int $page = null): array
+    {
+        $search = Validator::validate(compact('q', 'start_date', 'end_date'), [
+            'q' => ['nullable', 'string'],
+            'start_date' => ['nullable', 'required_without:q', 'string', 'date_format:Y-m-d', 'before:end_date'],
+            'end_date' => ['nullable', 'required_without:q', 'string', 'date_format:Y-m-d'],
+        ]);
+
+        $query = array_merge(
+            $search,
+            $this->getPaginateQuery($perPage, $pageName, $page)
+        );
+
+        return $this->getRequest()->get('api/v2/ondemand-shipments', $query)->json('data');
+    }
+
+    /**
+     * @throws ConnectionException
+     */
     public function createShipment(array $data): bool
     {
         Validator::validate($data, [

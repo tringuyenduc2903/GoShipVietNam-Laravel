@@ -74,7 +74,21 @@ GOSHIP_CLIENT_SECRET=
 
 ## Usage
 
-### 1. [Lấy tất cả tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
+### [Đăng nhập](https://doc.goship.io/getting-started/authentication#login)
+
+```php
+use BeetechAsia\GoShip\Facades\GoShip;
+
+$data = [
+    'username' => config('goshipvietnam.username'),
+    'password' => config('goshipvietnam.password'),
+    'client_id' => config('goshipvietnam.client_id'),
+    'client_secret' => config('goshipvietnam.client_secret'),
+];
+GoShip::login($data);
+```
+
+### [Lấy tất cả tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -82,7 +96,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getCities();
 ```
 
-### 2. [Lấy danh sách quận/huyện theo mã tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n-theo-m%C3%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
+### [Lấy danh sách quận/huyện theo mã tỉnh/thành phố](https://doc.goship.io/api/shipment/city#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n-theo-m%C3%A3-t%E1%BB%89nhth%C3%A0nh-ph%E1%BB%91)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -91,7 +105,7 @@ $cityId = 100000;
 GoShip::getDistrictsByCityId($cityId);
 ```
 
-### 3. [Lấy danh sách quận/huyện](https://doc.goship.io/api/shipment/district#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n)
+### [Lấy danh sách quận/huyện](https://doc.goship.io/api/shipment/district#l%E1%BA%A5y-danh-s%C3%A1ch-qu%E1%BA%ADnhuy%E1%BB%87n)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -99,7 +113,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getDistricts();
 ```
 
-### 4. [Lấy tất cả phường/xã theo mã quận/huyện](https://doc.goship.io/api/shipment/district#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-ph%C6%B0%E1%BB%9Dngx%C3%A3-theo-m%C3%A3-qu%E1%BA%ADnhuy%E1%BB%87n)
+### [Lấy tất cả phường/xã theo mã quận/huyện](https://doc.goship.io/api/shipment/district#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-ph%C6%B0%E1%BB%9Dngx%C3%A3-theo-m%C3%A3-qu%E1%BA%ADnhuy%E1%BB%87n)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -108,7 +122,7 @@ $districtId = 100100;
 GoShip::getWardsByDistrictId($districtId);
 ```
 
-### 5. [Lấy danh sách khách hàng](https://doc.goship.io/api/shipment/customer#l%E1%BA%A5y-danh-s%C3%A1ch-kh%C3%A1ch-h%C3%A0ng)
+### [Lấy danh sách khách hàng](https://doc.goship.io/api/shipment/customer#l%E1%BA%A5y-danh-s%C3%A1ch-kh%C3%A1ch-h%C3%A0ng)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -116,7 +130,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getCustomers();
 ```
 
-### 6. [Tìm kiếm một khách hàng](https://doc.goship.io/api/shipment/customer#t%C3%ACm-ki%E1%BA%BFm-m%E1%BB%99t-kh%C3%A1ch-h%C3%A0ng)
+### [Tìm kiếm một khách hàng](https://doc.goship.io/api/shipment/customer#t%C3%ACm-ki%E1%BA%BFm-m%E1%BB%99t-kh%C3%A1ch-h%C3%A0ng)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -125,7 +139,7 @@ $q = 'nguyenvana@gmail.com'; // q có thể nhận giá trị của các trườ
 GoShip::searchCustomer($q);
 ```
 
-### 7. [Tạo mới một khách hàng](https://doc.goship.io/api/shipment/customer#t%E1%BA%A1o-m%E1%BB%9Bi-m%E1%BB%99t-kh%C3%A1ch-h%C3%A0ng)
+### [Tạo mới một khách hàng](https://doc.goship.io/api/shipment/customer#t%E1%BA%A1o-m%E1%BB%9Bi-m%E1%BB%99t-kh%C3%A1ch-h%C3%A0ng)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -143,7 +157,7 @@ $data = [
 GoShip::createCustomer($data);
 ```
 
-### 8. [Cập nhật thông tin khách hàng](https://doc.goship.io/api/shipment/customer#c%E1%BA%ADp-nh%E1%BA%ADt-th%C3%B4ng-tin-kh%C3%A1ch-h%C3%A0ng)
+### [Cập nhật thông tin khách hàng](https://doc.goship.io/api/shipment/customer#c%E1%BA%ADp-nh%E1%BA%ADt-th%C3%B4ng-tin-kh%C3%A1ch-h%C3%A0ng)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -156,7 +170,7 @@ $data = [
 GoShip::updateCustomer($data);
 ```
 
-### 9. [Xóa thông tin khách hàng](https://doc.goship.io/api/shipment/customer#x%C3%B3a-th%C3%B4ng-tin-kh%C3%A1ch-h%C3%A0ng)
+### [Xóa thông tin khách hàng](https://doc.goship.io/api/shipment/customer#x%C3%B3a-th%C3%B4ng-tin-kh%C3%A1ch-h%C3%A0ng)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -165,7 +179,7 @@ $customerId = 'elpomgr8';
 GoShip::deleteCustomer('elpomgr8');
 ```
 
-### 10. [Lấy biểu phí vận chuyển](https://doc.goship.io/api/shipment/rate)
+### [Lấy biểu phí vận chuyển](https://doc.goship.io/api/shipment/rate)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -193,7 +207,7 @@ $data = [
 GoShip::getRates($data);
 ```
 
-### 11. [Danh sách Vận đơn](https://doc.goship.io/api/shipment/shipment#danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Danh sách Vận đơn](https://doc.goship.io/api/shipment/shipment#danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -201,7 +215,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getShipments();
 ```
 
-### 12. [Tìm kiếm Vận đơn](https://doc.goship.io/api/shipment/shipment#t%C3%ACm-ki%E1%BA%BFm-shipment)
+### [Tìm kiếm Vận đơn](https://doc.goship.io/api/shipment/shipment#t%C3%ACm-ki%E1%BA%BFm-shipment)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -216,7 +230,7 @@ $end_date = '2025-08-15';
 GoShip::searchShipment(start_date: $start_date, end_date: $end_date);
 ```
 
-### 13. [Tạo mới Vận đơn](https://doc.goship.io/api/shipment/shipment#t%E1%BA%A1o-m%E1%BB%9Bi-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Tạo mới Vận đơn](https://doc.goship.io/api/shipment/shipment#t%E1%BA%A1o-m%E1%BB%9Bi-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Enums\Payer;
@@ -257,7 +271,7 @@ $data = [
 GoShip::createShipment($data);
 ```
 
-### 14. [Xóa Vận đơn](https://doc.goship.io/api/shipment/shipment#x%C3%B3a-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Xóa Vận đơn](https://doc.goship.io/api/shipment/shipment#x%C3%B3a-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -266,7 +280,7 @@ $shipmentId = 'GS6AYEDVZ6';
 GoShip::deleteShipment($shipmentId);
 ```
 
-### 15. [Danh sách các phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#danh-s%C3%A1ch-c%C3%A1c-phi%C3%AAn-%C4%91%E1%BB%91i-so%C3%A1t)
+### [Danh sách các phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#danh-s%C3%A1ch-c%C3%A1c-phi%C3%AAn-%C4%91%E1%BB%91i-so%C3%A1t)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -274,7 +288,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getInvoices();
 ```
 
-### 16. [Tìm kiếm phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#t%C3%ACm-ki%E1%BA%BFm-phi%C3%AAn-%C4%91%E1%BB%91i-so%C3%A1t-cod)
+### [Tìm kiếm phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#t%C3%ACm-ki%E1%BA%BFm-phi%C3%AAn-%C4%91%E1%BB%91i-so%C3%A1t-cod)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -289,7 +303,7 @@ $to = '2025-08-15';
 GoShip::searchInvoice(from: $from, to: $to);
 ```
 
-### 17. [Tìm kiếm danh sách Vận đơn theo mã phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#t%C3%ACm-ki%E1%BA%BFm-danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n-theo-m%C3%A3-phi%C3%AAn-chuy%E1%BB%83n-cod)
+### [Tìm kiếm danh sách Vận đơn theo mã phiên đối soát COD](https://doc.goship.io/api/shipment/invoice#t%C3%ACm-ki%E1%BA%BFm-danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n-theo-m%C3%A3-phi%C3%AAn-chuy%E1%BB%83n-cod)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -298,7 +312,7 @@ $invoiceId = 'HDF9D9SS';
 GoShip::getShipmentByInvoiceId($invoiceId);
 ```
 
-### 18. [Lấy tất cả thông tin giao dịch](http://doc.goship.io/api/shipment/transaction#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-th%C3%B4ng-tin)
+### [Lấy tất cả thông tin giao dịch](http://doc.goship.io/api/shipment/transaction#l%E1%BA%A5y-t%E1%BA%A5t-c%E1%BA%A3-th%C3%B4ng-tin)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -306,7 +320,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::getTransactions();
 ```
 
-### 19. [Tìm kiếm giao dịch](https://doc.goship.io/api/shipment/transaction#t%C3%ACm-ki%E1%BA%BFm-giao-d%E1%BB%8Bch)
+### [Tìm kiếm giao dịch](https://doc.goship.io/api/shipment/transaction#t%C3%ACm-ki%E1%BA%BFm-giao-d%E1%BB%8Bch)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
@@ -321,7 +335,7 @@ $to = '2025-08-15';
 GoShip::searchTransaction(from: $from, to: $to);
 ```
 
-### 20. [Xác thực webhook](https://doc.goship.io/api/shipment/webhooks#x%C3%A1c-th%E1%BB%B1c-webhook)
+### [Xác thực webhook](https://doc.goship.io/api/shipment/webhooks#x%C3%A1c-th%E1%BB%B1c-webhook)
 
 Giới thiệu: Hàm trả về giá trị boolean (true/false)
 
@@ -335,21 +349,7 @@ use BeetechAsia\GoShip\Facades\GoShip;
 GoShip::verifyWebhook();
 ```
 
-### 21. [Đăng nhập](https://doc.goship.io/getting-started/authentication#login)
-
-```php
-use BeetechAsia\GoShip\Facades\GoShip;
-
-$data = [
-    'username' => config('goshipvietnam.username'),
-    'password' => config('goshipvietnam.password'),
-    'client_id' => config('goshipvietnam.client_id'),
-    'client_secret' => config('goshipvietnam.client_secret'),
-];
-GoShip::login($data);
-```
-
-### 22. [Lấy biểu phí vận chuyển Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/rate)
+### [Lấy biểu phí vận chuyển Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/rate)
 
 ```php
 use BeetechAsia\GoShip\Enums\Kind;
@@ -380,7 +380,30 @@ $data = [
 GoShip::getOnDemandRates($data);
 ```
 
-### 23. [Tạo mới Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#t%E1%BA%A1o-m%E1%BB%9Bi-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Danh sách Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n)
+
+```php
+use BeetechAsia\GoShip\Facades\GoShip;
+
+GoShip::getOnDemandShipments();
+```
+
+### [Tìm kiếm Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#t%C3%ACm-ki%E1%BA%BFm-shipment)
+
+```php
+use BeetechAsia\GoShip\Facades\GoShip;
+
+// Tìm kiếm theo id, order_id
+$q = '56GDG8F';
+GoShip::searchOnDemandShipment($q);
+
+// Tìm kiếm theo thời gian bắt đầu và thời gian kết thúc
+$start_date = '2025-08-08';
+$end_date = '2025-08-15';
+GoShip::searchOnDemandShipment(start_date: $start_date, end_date: $end_date);
+```
+
+### [Tạo mới Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#t%E1%BA%A1o-m%E1%BB%9Bi-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Enums\Kind;
@@ -437,7 +460,7 @@ $data = [
 GoShip::createOnDemandShipment($data);
 ```
 
-### 24. [Sửa thông tin Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#s%E1%BB%ADa-th%C3%B4ng-tin-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Sửa thông tin Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#s%E1%BB%ADa-th%C3%B4ng-tin-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Enums\Kind;
@@ -495,21 +518,13 @@ $data = [
 GoShip::updateOnDemandShipment($shipmentId, $data);
 ```
 
-### 25. [Xóa Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#x%C3%B3a-v%E1%BA%ADn-%C4%91%C6%A1n)
+### [Xóa Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#x%C3%B3a-v%E1%BA%ADn-%C4%91%C6%A1n)
 
 ```php
 use BeetechAsia\GoShip\Facades\GoShip;
 
 $shipmentId = '56GDG8F';
 GoShip::deleteOnDemandShipment($shipmentId);
-```
-
-### 26. [Danh sách Vận đơn Đơn giao hoả tốc](https://doc.goship.io/api/ondemand-shipment/shipment#danh-s%C3%A1ch-v%E1%BA%ADn-%C4%91%C6%A1n)
-
-```php
-use BeetechAsia\GoShip\Facades\GoShip;
-
-GoShip::getOnDemandShipments();
 ```
 
 ## Testing

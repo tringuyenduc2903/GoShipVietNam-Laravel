@@ -56,6 +56,25 @@ it(
 );
 
 it(
+    'searchOnDemandShipment must be array',
+    /**
+     * @throws ConnectionException
+     */
+    function () {
+        $shipments = fake()->boolean()
+            ? GoShip::searchOnDemandShipment(fake()->randomElement(['GSNX8EXZLM', 'ed27e917-9ef2-4121-abe5-e277bea45cdd']))
+            : GoShip::searchOnDemandShipment(
+                start_date: now()->subDays(7)->format('Y-m-d'),
+                end_date: now()->format('Y-m-d')
+            );
+
+        expect($shipments)
+            ->dump()
+            ->toBeArray();
+    }
+);
+
+it(
     'createShipment must be bool',
     /**
      * @throws ConnectionException
