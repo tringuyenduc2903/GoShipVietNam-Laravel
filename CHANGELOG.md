@@ -2,6 +2,18 @@
 
 All notable changes to `GoShipVietNam-Laravel` will be documented in this file.
 
+## Release v1.0.2 - GoShip SDK for Laravel - 2025-08-29
+
+This release introduces several improvements to the GoShipVietNam-Laravel SDK, focusing on enhancing webhook verification and API configuration for better reliability and simplicity. These updates ensure smoother integration with the GoShip API for Vietnam-based logistics and shipping services.
+
+### Key Changes
+
+- **Improved Webhook Verification**: Updated the `verifyWebhook` method to use `request()->all()` instead of `request()->getContent()` for more reliable payload handling. Additionally, fixed the hash calculation order to ensure accurate webhook verification.
+- **Simplified API URL Configuration**: Removed the `/api/v2` suffix from the API URL in the source code, configuration files, and documentation, making the setup more straightforward for both sandbox and production environments.
+- **Enhanced Documentation**: Updated the README and configuration files to reflect the simplified API URL structure, improving clarity for developers.
+
+This version builds on the stability and usability introduced in v1.0.1, ensuring a more robust and developer-friendly experience for managing shipments, customers, and on-demand delivery services within Laravel applications.
+
 ## Release v1.0.1 - GoShip SDK for Laravel - 2025-08-16
 
 This release introduces minor updates and bug fixes to the GoShip SDK for Laravel, enhancing stability and usability for Vietnam-specific shipping integrations. Key improvements include refined API request handling, updated documentation for clarity, and minor performance optimizations. This version ensures better compatibility with the GoShip API and improves developer experience for managing shipments, customers, and on-demand services within Laravel applications.
