@@ -23,7 +23,7 @@ This is the contents of the published config file:
 
 ```php
 return [
-    'url' => env('GOSHIP_API_URL', 'https://api.goship.io/api/v2'),
+    'url' => env('GOSHIP_API_URL', 'https://api.goship.io'),
     'jwt' => env('GOSHIP_JWT', ''),
     'username' => env('GOSHIP_USERNAME', ''),
     'password' => env('GOSHIP_PASSWORD', ''),
@@ -34,8 +34,8 @@ return [
 
 #### Giải thích
 
-- **url**: Môi trường phát triển tích hợp (**Sandbox**: https://sandbox.goship.io/api/v2,
-  **Production**: https://api.goship.io/api/v2)
+- **url**: Môi trường phát triển tích hợp (**Sandbox**: https://sandbox.goship.io,
+  **Production**: https://api.goship.io)
 - **jwt**: Access Token (Sử dụng cho Phương thức
   _[Lấy Access Token trực tiếp](https://doc.goship.io/getting-started/installation#_1-l%E1%BA%A5y-access-token-tr%E1%BB%B1c-ti%E1%BA%BFp)_)
 - **username**: Email (Sử dụng cho Phương thức

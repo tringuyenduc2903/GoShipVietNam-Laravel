@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'url' => env('GOSHIP_API_URL', 'https://api.goship.io/api/v2'),
+    'url' => env('GOSHIP_API_URL', 'https://api.goship.io'),
     'jwt' => env('GOSHIP_JWT', ''),
     'username' => env('GOSHIP_USERNAME', ''),
     'password' => env('GOSHIP_PASSWORD', ''),
